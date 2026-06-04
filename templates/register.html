@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% block title %}Register{% endblock %}
+{% block content %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-top"><span></span><h2>Create your journal</h2><p>Start your mental wellbeing journey</p></div>
+    {% if error %}<div class="alert alert-error">{{ error }}</div>{% endif %}
+    <form method="POST" class="aform">
+      <div class="fg-row">
+        <div class="fg"><label>Full Name</label><input type="text" name="name" placeholder="Your name" required></div>
+        <div class="fg"><label>Age</label><input type="number" name="age" placeholder="21" min="10" max="100"></div>
+      </div>
+      <div class="fg"><label>Username</label><input type="text" name="username" placeholder="choose_username" required></div>
+      <div class="fg"><label>Password</label><input type="password" name="password" placeholder="Create password" required></div>
+      <div class="fg"><label>Guardian Email <span class="opt">(optional — for critical alerts)</span></label><input type="email" name="guardian_email" placeholder="guardian@email.com"></div>
+      <button class="btn btn-primary btn-full" type="submit">Create Account</button>
+    </form>
+    <p class="aswitch">Already have one? <a href="{{ url_for('login') }}">Sign in</a></p>
+  </div>
+</div>
+{% endblock %}

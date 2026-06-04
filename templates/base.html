@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>{% block title %}SmartJournal{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  {% if session.get('user_id') %}
+  <nav class="nav">
+    <a href="{{ url_for('dashboard') }}" class="nav-brand"><span></span>SmartJournal</a>
+    <div class="nav-links" id="navLinks">
+      <a href="{{ url_for('dashboard') }}"
+        class="nl {% if request.endpoint=='dashboard' %}active{% endif %}">Dashboard</a>
+      <a href="{{ url_for('log_mood') }}" class="nl {% if request.endpoint=='log_mood' %}active{% endif %}">Log Mood</a>
+      <a href="{{ url_for('chatbot') }}" class="nl {% if request.endpoint=='chatbot' %}active{% endif %}">Chat</a>
+      <a href="{{ url_for('analysis') }}" class="nl {% if request.endpoint=='analysis' %}active{% endif %}">Analysis</a>
+      <a href="{{ url_for('history') }}" class="nl {% if request.endpoint=='history' %}active{% endif %}">History</a>
+      <a href="{{ url_for('profile') }}" class="nl {% if request.endpoint=='profile' %}active{% endif %}">Profile</a>
+      <a href="{{ url_for('logout') }}" class="nl nl-logout">Logout</a>
+    </div>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </nav>
+  {% endif %}
+  <main
+    class="main {% if not session.get('user_id') and request.endpoint != 'index' %}auth-main{% endif %} {% if request.endpoint == 'index' %}hero-main{% endif %}">
+    {% block content %}{% endblock %}
+  </main>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

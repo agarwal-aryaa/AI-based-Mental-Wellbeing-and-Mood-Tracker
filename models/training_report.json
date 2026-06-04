@@ -1,0 +1,342 @@
+{
+  "trained_at": "2026-05-03T22:47:16.354151",
+  "dataset": "tweet_emotions.csv",
+  "total_samples": 40000,
+  "best_model": "Linear SVM",
+  "mood_labels": [
+    "happy",
+    "neutral",
+    "sad",
+    "anxious",
+    "angry"
+  ],
+  "label_map": {
+    "happiness": "happy",
+    "love": "happy",
+    "enthusiasm": "happy",
+    "fun": "happy",
+    "relief": "happy",
+    "surprise": "happy",
+    "neutral": "neutral",
+    "boredom": "neutral",
+    "empty": "neutral",
+    "sadness": "sad",
+    "worry": "anxious",
+    "hate": "angry",
+    "anger": "angry"
+  },
+  "model_results": {
+    "Logistic Regression": {
+      "accuracy": 0.4441,
+      "macro_f1": 0.3806,
+      "macro_prec": 0.3789,
+      "macro_recall": 0.3839,
+      "cv_mean": 0.4433,
+      "cv_std": 0.0014,
+      "train_time_s": 28.32,
+      "confusion_matrix": [
+        [
+          1795,
+          602,
+          253,
+          349,
+          61
+        ],
+        [
+          530,
+          763,
+          232,
+          340,
+          48
+        ],
+        [
+          169,
+          161,
+          337,
+          303,
+          62
+        ],
+        [
+          340,
+          354,
+          365,
+          573,
+          58
+        ],
+        [
+          39,
+          43,
+          65,
+          63,
+          77
+        ]
+      ],
+      "per_class": {
+        "happy": {
+          "precision": 0.25163398692810457,
+          "recall": 0.2682926829268293,
+          "f1-score": 0.2596964586846543,
+          "support": 287.0
+        },
+        "neutral": {
+          "precision": 0.35196560196560195,
+          "recall": 0.3390532544378698,
+          "f1-score": 0.3453887884267631,
+          "support": 1690.0
+        },
+        "sad": {
+          "precision": 0.6247824573616428,
+          "recall": 0.5866013071895425,
+          "f1-score": 0.6050901736052587,
+          "support": 3060.0
+        },
+        "anxious": {
+          "precision": 0.3967758710348414,
+          "recall": 0.39884997386304233,
+          "f1-score": 0.3978102189781022,
+          "support": 1913.0
+        },
+        "angry": {
+          "precision": 0.26916932907348246,
+          "recall": 0.32655038759689925,
+          "f1-score": 0.29509632224168125,
+          "support": 1032.0
+        }
+      }
+    },
+    "Linear SVM": {
+      "accuracy": 0.4649,
+      "macro_f1": 0.3326,
+      "macro_prec": 0.4447,
+      "macro_recall": 0.3267,
+      "cv_mean": 0.4625,
+      "cv_std": 0.0044,
+      "train_time_s": 9.46,
+      "confusion_matrix": [
+        [
+          2445,
+          378,
+          43,
+          192,
+          2
+        ],
+        [
+          1035,
+          588,
+          55,
+          229,
+          6
+        ],
+        [
+          438,
+          176,
+          134,
+          274,
+          10
+        ],
+        [
+          719,
+          328,
+          123,
+          518,
+          2
+        ],
+        [
+          114,
+          56,
+          24,
+          67,
+          26
+        ]
+      ],
+      "per_class": {
+        "happy": {
+          "precision": 0.5652173913043478,
+          "recall": 0.09059233449477352,
+          "f1-score": 0.15615615615615616,
+          "support": 287.0
+        },
+        "neutral": {
+          "precision": 0.4046875,
+          "recall": 0.30650887573964497,
+          "f1-score": 0.3488215488215488,
+          "support": 1690.0
+        },
+        "sad": {
+          "precision": 0.514628499263313,
+          "recall": 0.7990196078431373,
+          "f1-score": 0.6260401997183459,
+          "support": 3060.0
+        },
+        "anxious": {
+          "precision": 0.3853211009174312,
+          "recall": 0.30737062205959226,
+          "f1-score": 0.34195987205583017,
+          "support": 1913.0
+        },
+        "angry": {
+          "precision": 0.35356200527704484,
+          "recall": 0.1298449612403101,
+          "f1-score": 0.18993621545003544,
+          "support": 1032.0
+        }
+      }
+    },
+    "Decision Tree": {
+      "accuracy": 0.3429,
+      "macro_f1": 0.2988,
+      "macro_prec": 0.3321,
+      "macro_recall": 0.3304,
+      "cv_mean": 0.3429,
+      "cv_std": 0.0,
+      "train_time_s": 14.97,
+      "confusion_matrix": [
+        [
+          829,
+          1225,
+          366,
+          457,
+          183
+        ],
+        [
+          142,
+          1128,
+          281,
+          249,
+          113
+        ],
+        [
+          69,
+          337,
+          299,
+          240,
+          87
+        ],
+        [
+          126,
+          620,
+          403,
+          406,
+          135
+        ],
+        [
+          18,
+          85,
+          51,
+          58,
+          75
+        ]
+      ],
+      "per_class": {
+        "happy": {
+          "precision": 0.12647554806070826,
+          "recall": 0.2613240418118467,
+          "f1-score": 0.17045454545454544,
+          "support": 287.0
+        },
+        "neutral": {
+          "precision": 0.28794326241134754,
+          "recall": 0.24023668639053256,
+          "f1-score": 0.26193548387096777,
+          "support": 1690.0
+        },
+        "sad": {
+          "precision": 0.700168918918919,
+          "recall": 0.27091503267973854,
+          "f1-score": 0.39066918001885015,
+          "support": 3060.0
+        },
+        "anxious": {
+          "precision": 0.33225331369661265,
+          "recall": 0.5896497647673811,
+          "f1-score": 0.4250188394875659,
+          "support": 1913.0
+        },
+        "angry": {
+          "precision": 0.21357142857142858,
+          "recall": 0.28972868217054265,
+          "f1-score": 0.24588815789473684,
+          "support": 1032.0
+        }
+      }
+    },
+    "k-NN (k=5)": {
+      "accuracy": 0.3955,
+      "macro_f1": 0.3026,
+      "macro_prec": 0.3301,
+      "macro_recall": 0.3001,
+      "cv_mean": 0.3955,
+      "cv_std": 0.0,
+      "train_time_s": 1.37,
+      "confusion_matrix": [
+        [
+          1752,
+          825,
+          65,
+          388,
+          30
+        ],
+        [
+          702,
+          795,
+          60,
+          326,
+          30
+        ],
+        [
+          286,
+          331,
+          110,
+          274,
+          31
+        ],
+        [
+          508,
+          551,
+          131,
+          462,
+          38
+        ],
+        [
+          72,
+          92,
+          22,
+          63,
+          38
+        ]
+      ],
+      "per_class": {
+        "happy": {
+          "precision": 0.2275449101796407,
+          "recall": 0.13240418118466898,
+          "f1-score": 0.16740088105726872,
+          "support": 287.0
+        },
+        "neutral": {
+          "precision": 0.3053536021150033,
+          "recall": 0.2733727810650888,
+          "f1-score": 0.2884795504214799,
+          "support": 1690.0
+        },
+        "sad": {
+          "precision": 0.5277108433734939,
+          "recall": 0.5725490196078431,
+          "f1-score": 0.5492163009404388,
+          "support": 3060.0
+        },
+        "anxious": {
+          "precision": 0.3064764841942945,
+          "recall": 0.41557762676424465,
+          "f1-score": 0.3527845573552252,
+          "support": 1913.0
+        },
+        "angry": {
+          "precision": 0.28350515463917525,
+          "recall": 0.1065891472868217,
+          "f1-score": 0.15492957746478872,
+          "support": 1032.0
+        }
+      }
+    }
+  }
+}

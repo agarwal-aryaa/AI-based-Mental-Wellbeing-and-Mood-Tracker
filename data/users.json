@@ -1,0 +1,249 @@
+{
+  "demo": {
+    "name": "Demo User",
+    "age": "21",
+    "password": "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824",
+    "guardian_email": "guardian@example.com",
+    "records": [
+      {
+        "date": "2025-04-18",
+        "time": "09:10",
+        "mood": "happy",
+        "journal": "Had a wonderful morning, felt really energized!",
+        "ai_used": true,
+        "confidence": 91
+      },
+      {
+        "date": "2025-04-19",
+        "time": "20:05",
+        "mood": "neutral",
+        "journal": "Nothing special, just a regular day.",
+        "ai_used": true,
+        "confidence": 44
+      },
+      {
+        "date": "2025-04-20",
+        "time": "22:30",
+        "mood": "anxious",
+        "journal": "Worried sick about the upcoming exams and assignments piling up.",
+        "ai_used": true,
+        "confidence": 99
+      },
+      {
+        "date": "2025-04-21",
+        "time": "21:00",
+        "mood": "sad",
+        "journal": "Feeling lonely and a bit overwhelmed today.",
+        "ai_used": true,
+        "confidence": 57
+      },
+      {
+        "date": "2025-04-22",
+        "time": "19:45",
+        "mood": "anxious",
+        "journal": "Still stressed about deadlines. Can't focus at all.",
+        "ai_used": true,
+        "confidence": 55
+      },
+      {
+        "date": "2025-04-23",
+        "time": "10:15",
+        "mood": "happy",
+        "journal": "Went for a walk, felt amazing! The fresh air helped a lot.",
+        "ai_used": true,
+        "confidence": 73
+      },
+      {
+        "date": "2025-04-24",
+        "time": "21:00",
+        "mood": "neutral",
+        "journal": "Okay day overall. Finished one assignment.",
+        "ai_used": true,
+        "confidence": 38
+      },
+      {
+        "date": "2025-04-25",
+        "time": "20:30",
+        "mood": "happy",
+        "journal": "Great session with friends, laughed so much today.",
+        "ai_used": true,
+        "confidence": 85
+      },
+      {
+        "date": "2025-04-26",
+        "time": "09:00",
+        "mood": "neutral",
+        "journal": "",
+        "ai_used": false,
+        "confidence": 0
+      },
+      {
+        "date": "2025-04-27",
+        "time": "21:10",
+        "mood": "sad",
+        "journal": "Missing home. Feeling a bit down and nostalgic tonight.",
+        "ai_used": true,
+        "confidence": 57
+      },
+      {
+        "date": "2025-04-28",
+        "time": "20:00",
+        "mood": "anxious",
+        "journal": "Panic about presentations. Feel like I'm not prepared enough.",
+        "ai_used": true,
+        "confidence": 55
+      },
+      {
+        "date": "2025-04-29",
+        "time": "22:00",
+        "mood": "sad",
+        "journal": "Terrible day. Everything went wrong and I feel hopeless.",
+        "ai_used": true,
+        "confidence": 62
+      },
+      {
+        "date": "2025-04-30",
+        "time": "18:30",
+        "mood": "happy",
+        "journal": "Submitted my project! Feeling so relieved and proud of myself.",
+        "ai_used": true,
+        "confidence": 91
+      },
+      {
+        "date": "2025-05-01",
+        "time": "20:00",
+        "mood": "happy",
+        "journal": "Celebrated with friends. Had the best time ever!",
+        "ai_used": true,
+        "confidence": 88
+      },
+      {
+        "date": "2025-05-02",
+        "time": "21:30",
+        "mood": "neutral",
+        "journal": "Resting and recovering after a hectic week.",
+        "ai_used": true,
+        "confidence": 36
+      }
+    ]
+  },
+  "abc": {
+    "name": "abc def",
+    "age": "21",
+    "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "guardian_email": "",
+    "records": [
+      {
+        "date": "2026-05-03",
+        "time": "15:10",
+        "mood": "sad",
+        "journal": "i'm sad",
+        "ai_used": true,
+        "confidence": 69
+      },
+      {
+        "date": "2026-05-03",
+        "time": "18:38",
+        "mood": "anxious",
+        "journal": "i am anxious",
+        "ai_used": true,
+        "confidence": 30
+      },
+      {
+        "date": "2026-05-05",
+        "time": "07:00",
+        "mood": "anxious",
+        "journal": "i am scared.",
+        "ai_used": true,
+        "confidence": 63
+      },
+      {
+        "date": "2026-05-05",
+        "time": "07:11",
+        "mood": "happy",
+        "journal": "i went to park with my cousins",
+        "ai_used": true,
+        "confidence": 55
+      },
+      {
+        "date": "2026-05-05",
+        "time": "09:10",
+        "mood": "anxious",
+        "journal": "i have an exam today.",
+        "ai_used": true,
+        "confidence": 36
+      },
+      {
+        "date": "2026-05-05",
+        "time": "09:42",
+        "mood": "anxious",
+        "journal": "i have a exam today.",
+        "ai_used": true,
+        "confidence": 36
+      },
+      {
+        "date": "2026-05-05",
+        "time": "09:42",
+        "mood": "happy",
+        "journal": "my exam went well today.",
+        "ai_used": true,
+        "confidence": 42
+      },
+      {
+        "date": "2026-05-05",
+        "time": "09:43",
+        "mood": "sad",
+        "journal": "i am sad",
+        "ai_used": true,
+        "confidence": 44
+      },
+      {
+        "date": "2026-05-05",
+        "time": "09:43",
+        "mood": "anxious",
+        "journal": "i am really sad",
+        "ai_used": true,
+        "confidence": 51
+      },
+      {
+        "date": "2026-05-05",
+        "time": "09:44",
+        "mood": "sad",
+        "journal": "my day went very bad.",
+        "ai_used": true,
+        "confidence": 37
+      }
+    ]
+  },
+  "nn": {
+    "name": "nn",
+    "age": "78",
+    "password": "fab66aa01347d3f11a16468941378cea495937e5f482e18ea6472681e03d3936",
+    "guardian_email": "",
+    "records": []
+  },
+  "vanshikaaa": {
+    "name": "Vanshika",
+    "age": "19",
+    "password": "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4",
+    "guardian_email": "",
+    "records": [
+      {
+        "date": "2026-05-05",
+        "time": "07:25",
+        "mood": "anxious",
+        "journal": "I have an exam today.",
+        "ai_used": true,
+        "confidence": 36
+      },
+      {
+        "date": "2026-05-05",
+        "time": "07:26",
+        "mood": "happy",
+        "journal": "My exam went well.",
+        "ai_used": true,
+        "confidence": 38
+      }
+    ]
+  }
+}

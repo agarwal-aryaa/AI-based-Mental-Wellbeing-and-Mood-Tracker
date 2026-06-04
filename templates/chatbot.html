@@ -1,0 +1,94 @@
+{% extends "base.html" %}{% block title %}AI Chat{% endblock %}
+{% block content %}
+<div class="page-hdr">
+  <div>
+    <h1>Your AI <em>companion</em></h1>
+    <p>Talk freely - I understand your emotions</p>
+  </div>
+</div>
+<div class="chat-wrap">
+  <div class="chat-win" id="chatWin">
+    <div class="cmsg bot">
+      <div class="cav"></div>
+      <div class="cbub">
+        <p>Hello {{ user.name }}! I'm your SmartJournal AI companion. How are you feeling today? </p><span
+          class="ctime">just now</span>
+      </div>
+    </div>
+  </div>
+  <div class="chat-bottom">
+    <div class="mood-det" id="moodDet" style="display:none"> Detected: <strong id="moodDetTxt"></strong></div>
+    <div class="chat-row">
+      <textarea id="cinput" placeholder="Tell me how you are feeling..." rows="2"
+        onkeydown="handleKey(event)"></textarea>
+      <button class="btn btn-primary" onclick="sendMsg()">Send</button>
+    </div>
+    <div class="qps">
+      <button class="qp" onclick="q('I am feeling really stressed today')"> Stressed</button>
+      <button class="qp" onclick="q('I had a great day today')"> Great day</button>
+      <button class="qp" onclick="q('I feel sad and lonely')"> Lonely</button>
+      <button class="qp" onclick="q('I need relaxation tips')"> Relax</button>
+    </div>
+  </div>
+</div>
+<script>
+  function handleKey(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      sendMsg();
+    }
+  }
+  function ts() {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+  function q(t) {
+    document.getElementById('cinput').value = t;
+  }
+  function addMsg(text, role, time, tip, mood, conf) {
+    var w = document.getElementById('chatWin');
+    var d = document.createElement('div');
+    d.className = 'cmsg ' + role;
+    var h = (role === 'bot') ? '<div class="cav"></div>' : '';
+    h += '<div class="cbub"><p>' + text + '</p>';
+    if (tip) {
+      h += '<div class="ctip">' + tip + '</div>';
+    }
+    h += '<span class="ctime">' + time + '</span></div>';
+    d.innerHTML = h;
+    w.appendChild(d);
+    w.scrollTop = w.scrollHeight;
+    if (mood) {
+      document.getElementById('moodDet').style.display = 'flex';
+      document.getElementById('moodDetTxt').textContent =
+        mood.charAt(0).toUpperCase() + mood.slice(1) +
+        (conf ? ' - ' + conf + '% confidence' : '');
+    }
+  }
+  async function sendMsg() {
+    var inp = document.getElementById('cinput');
+    var msg = inp.value.trim();
+    if (!msg) { return; }
+    addMsg(msg, 'user', ts());
+    inp.value = '';
+    var w = document.getElementById('chatWin');
+    var t = document.createElement('div');
+    t.className = 'cmsg bot typing';
+    t.innerHTML = '<div class="cav"></div><div class="cbub"><span></span><span></span><span></span></div>';
+    w.appendChild(t);
+    w.scrollTop = w.scrollHeight;
+    try {
+      var r = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg })
+      });
+      var d = await r.json();
+      t.remove();
+      addMsg(d.response, 'bot', ts(), d.tip, d.detected_mood, d.confidence);
+    } catch (e) {
+      t.remove();
+      addMsg('Sorry, something went wrong. Please try again.', 'bot', ts());
+    }
+  }
+</script>
+{% endblock %}

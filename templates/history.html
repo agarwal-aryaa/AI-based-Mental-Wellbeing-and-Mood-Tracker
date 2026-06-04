@@ -1,0 +1,46 @@
+{% extends "base.html" %}{% block title %}History{% endblock %}
+{% block content %}
+<div class="page-hdr">
+  <div>
+    <h1>Entry <em>History</em></h1>
+    <p>All your mood logs in reverse chronological order</p>
+  </div>
+</div>
+{% if records %}
+<div class="card">
+  <div class="table-wrap">
+    <table class="res-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Mood</th>
+          <th>Method</th>
+          <th>Confidence</th>
+          <th>Journal</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in records %}
+        <tr>
+          <td>{{ r.date }}</td>
+          <td>{{ r.time }}</td>
+          <td><span class="mood-tag-{{ r.mood }}">{{ r.mood.title() }}</span></td>
+          <td>{% if r.get('ai_used') %}<span class="badge-ai"> AI</span>{% else %}<span
+              class="badge-manual">Manual</span>{% endif %}</td>
+          <td>{% if r.get('confidence') %}{{ r.confidence }}%{% else %}—{% endif %}</td>
+          <td class="jcell">{{ r.journal or '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+<div class="card">
+  <div class="empty"><span></span>
+    <p>No entries yet.</p><a href="{{ url_for('log_mood') }}" class="btn btn-primary">Log Your First Mood</a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="page-hdr"><div><h1>Your <em>Profile</em></h1><p>Manage your account and alert settings</p></div></div>
+<div class="profile-wrap">
+  <div class="card">
+    <div class="pav">{{ user.name[0].upper() }}</div>
+    <h2 class="pname">{{ user.name }}</h2>
+    <p class="puid">@{{ uid }}</p>
+    <form method="POST" class="aform">
+      <div class="fg"><label>Full Name</label><input type="text" name="name" value="{{ user.name }}" required></div>
+      <div class="fg"><label>Age</label><input type="number" name="age" value="{{ user.age or '' }}" min="10" max="100"></div>
+      <div class="fg"><label>Guardian Email <span class="opt">(notified on critical alerts)</span></label><input type="email" name="guardian_email" value="{{ user.guardian_email or '' }}" placeholder="guardian@email.com"></div>
+      <div class="alert-info">
+        <strong> Alert Thresholds</strong>
+        <p> Warning: 3 consecutive negative mood days<br>Critical: 6 out of 7 days negative — guardian notified</p>
+      </div>
+      <button class="btn btn-primary" type="submit">Save Changes</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

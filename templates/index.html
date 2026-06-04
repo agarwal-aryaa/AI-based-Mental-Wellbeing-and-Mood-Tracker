@@ -1,0 +1,95 @@
+{% extends "base.html" %}{% block title %}SmartJournal - AI Wellbeing Tracker{% endblock %}
+{% block content %}
+<div class="hero-section">
+  <div class="hero-orbs">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="badge"> AI-Powered Mental Wellbeing</span>
+      <h1>Your mind deserves<br><em>a safe space.</em></h1>
+      <p>SmartJournal uses machine learning trained on 40,000 real tweets to understand your emotions, track mood
+        patterns, and guide you toward better wellbeing — one day at a time.</p>
+      <div class="hero-btns">
+        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Start Your Journey</a>
+        <a href="{{ url_for('login') }}" class="btn btn-ghost btn-lg">Sign In</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill">TF-IDF + SVM</span>
+        <span class="pill">Trend Analysis</span>
+        <span class="pill">AI Chatbot</span>
+        <span class="pill">Alert System</span>
+      </div>
+    </div>
+    <div class="hero-cards">
+      <div class="mood-card" style="--c:#6ee7b7;--i:1"><span class="mc-emoji">😊</span>
+        <div><span class="mc-label">Happy</span>
+          <div class="mc-desc">Joyful & content</div>
+        </div>
+      </div>
+      <div class="mood-card" style="--c:#93c5fd;--i:2"><span class="mc-emoji">😐</span>
+        <div><span class="mc-label">Neutral</span>
+          <div class="mc-desc">Calm & balanced</div>
+        </div>
+      </div>
+      <div class="mood-card" style="--c:#fca5a5;--i:3"><span class="mc-emoji">😔</span>
+        <div><span class="mc-label">Sad</span>
+          <div class="mc-desc">Low & melancholy</div>
+        </div>
+      </div>
+      <div class="mood-card" style="--c:#fcd34d;--i:4"><span class="mc-emoji">😰</span>
+        <div><span class="mc-label">Anxious</span>
+          <div class="mc-desc">Tense & worried</div>
+        </div>
+      </div>
+      <div class="mood-card" style="--c:#f9a8d4;--i:5"><span class="mc-emoji">😠</span>
+        <div><span class="mc-label">Angry</span>
+          <div class="mc-desc">Frustrated & upset</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="features">
+  <h2>Everything you need to understand your emotions</h2>
+  <p class="features-sub">Six powerful tools working together to give you deeper insight into your mental patterns —
+    backed by real data science.</p>
+  <div class="feat-grid">
+    <div class="feat">
+      <div class="feat-icon"></div>
+      <h3>ML Classification</h3>
+      <p>Trained on 40,000 tweets using TF-IDF vectorisation + Linear SVM. Classifies journal text into 5 mood
+        categories automatically.</p>
+      <small>Logistic Regression · SVM · Decision Tree · k-NN</small>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"></div>
+      <h3>Trend Visualization</h3>
+      <p>Daily and weekly mood charts reveal emotional patterns over time — powered by beautiful Chart.js
+        visualisations.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"></div>
+      <h3> Streak Detection</h3>
+      <p>Sequential search identifies your longest negative mood streak to trigger timely, meaningful
+        alerts.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"></div>
+      <h3>Smart Alert System</h3>
+      <p>Rule-based threshold detection triggers warnings after 3 consecutive or 6-of-7 negative mood days to keep you
+        safe.</p>
+      <small>Decision Rules, Guardian Notifications</small>
+    </div>
+    <div class="feat">
+      <div class="feat-icon"></div>
+      <h3>AI Chatbot</h3>
+      <p>Mood-aware conversational AI responds to your feelings with empathy and evidence-based self-care tips.</p>
+      <small>Real-time classification, Confidence scores</small>
+    </div>
+  </div>
+</section>
+{% endblock %}

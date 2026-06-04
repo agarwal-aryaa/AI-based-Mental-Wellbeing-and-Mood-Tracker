@@ -1,0 +1,92 @@
+{% extends "base.html" %}{% block title %}Log Mood{% endblock %}
+{% block content %}
+<div class="page-hdr">
+  <div>
+    <h1>How are you <em>feeling?</em></h1>
+    <p>Select a mood or write a journal entry — {% if model_loaded %}the trained ML model will classify it{% else
+      %}<span style="color:#fca5a5"> Run train_model.py first to enable AI classification</span>{% endif %}</p>
+  </div>
+</div>
+
+<div class="log-wrap">
+  <form method="POST" class="log-form">
+
+    <div class="card">
+      <h3 class="ct">Mood Reference <small>AI will detect your mood from your text</small></h3>
+      <div class="mood-grid">
+        {% for val,emoji,desc in [('happy','😊','Joyful & positive'),('neutral','😐','Okay, nothing
+        special'),('sad','😔','Feeling low or down'),('anxious','😰','Worried or stressed'),('angry','😠','Frustrated or
+        upset')] %}
+        <div class="mood-opt mood-opt-{{val}} mood-opt-static"
+          style="pointer-events:none;user-select:none;opacity:0.85;cursor:default;">
+          <div class="moi">
+            <span class="mo-emoji">{{emoji}}</span>
+            <span class="mo-name">{{val.title()}}</span>
+            <span class="mo-desc">{{desc}}</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 class="ct">Journal Entry <small class="opt"></small></h3>
+      <textarea name="journal" id="jtext" rows="6"
+        placeholder="Write freely about your day, thoughts, or feelings…"></textarea>
+      <div class="jfooter">
+        <span class="jcc"><span id="cc">0</span> chars</span>
+        <div class="ai-pill" id="aiPill">AI Classification Active</div>
+      </div>
+    </div>
+
+    <div class="log-actions">
+      <button type="submit" class="btn btn-primary btn-lg">Save Entry</button>
+      <a href="{{ url_for('dashboard') }}" class="btn btn-ghost">Cancel</a>
+    </div>
+  </form>
+
+  <div class="ml-sidebar">
+    <h4>How the ML model works</h4>
+    <div class="ml-step">
+      <div class="ms-num">1</div>
+      <div><strong>Preprocessing</strong><br>URLs, @mentions and special chars removed. Text lowercased.</div>
+    </div>
+    <div class="ml-step">
+      <div class="ms-num">2</div>
+      <div><strong>TF-IDF Vectorisation</strong><br>Text converted to 40,000-dim sparse vector. Bigrams included.</div>
+    </div>
+    <div class="ml-step">
+      <div class="ms-num">3</div>
+      <div><strong>Linear SVM</strong><br>Maximum-margin classifier predicts one of 5 mood classes.</div>
+    </div>
+    <div class="ml-step">
+      <div class="ms-num">4</div>
+      <div><strong>Confidence Score</strong><br>Calibrated probability estimates shown with each prediction.</div>
+    </div>
+    <div class="ml-note">Trained on <strong>40,000 tweets</strong> from tweet_emotions.csv with 13 emotion classes
+      mapped to 5 moods.</div>
+  </div>
+</div>
+
+<script>
+  const jt = document.getElementById('jtext');
+  const cc = document.getElementById('cc');
+  const pill = document.getElementById('aiPill');
+  const MC = { happy: '#6ee7b7', neutral: '#93c5fd', sad: '#fca5a5', anxious: '#fcd34d', angry: '#f9a8d4' };
+  const ME = { happy: '😊', neutral: '😐', sad: '😔', anxious: '😰', angry: '😠' };
+  let timer;
+  jt.addEventListener('input', () => {
+    cc.textContent = jt.value.length;
+    clearTimeout(timer);
+    if (jt.value.trim().length < 8) { pill.textContent = 'AI Classification Active'; pill.style.color = ''; return; }
+    pill.textContent = 'Analysing…';
+    timer = setTimeout(async () => {
+      try {
+        const r = await fetch('/api/preview', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: jt.value }) });
+        const d = await r.json();
+        if (d.mood) { pill.textContent = `${ME[d.mood] || ''} Detected: ${d.mood.charAt(0).toUpperCase() + d.mood.slice(1)} · ${d.confidence}%`; pill.style.color = MC[d.mood] || ''; }
+      } catch (e) { pill.textContent = 'AI Classification Active'; }
+    }, 600);
+  });
+</script>
+{% endblock %}
